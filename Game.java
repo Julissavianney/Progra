@@ -7,21 +7,29 @@ import rpg.entities.enemy.Enemy;
 import rpg.entities.enemy.goblins.RookieGoblin;
 import rpg.entities.enemy.slimes.BasicSlime;
 import rpg.gui.GUIForm;
+import rpg.gui.labels.GoldLabel;
+import rpg.gui.labels.NameLabel;
 
-
+import javax.swing.*;
+import java.awt.*;
 import java.util.Random;
-
 
 public class Game {
 
     private Player player;
     private Enemy enemy;
     private Inventory inventory;
+    private GoldLabel goldLabel;
+    private NameLabel nameLabel;
+    private JPanel topPanel;
+    private JPanel bottomPanel;
 
     public static void main(String[] args) {
-        Game game = new Game();
-        game.startGame();
-        new GUIForm(game);
+        SwingUtilities.invokeLater(() -> {
+            Game game = new Game();
+            game.startGame();
+            new GUIForm(game);
+        });
     }
 
     public Game() {
@@ -33,6 +41,7 @@ public class Game {
             default -> new Enemy("Otro enemigo:");
         };
         this.inventory = new Inventory();
+        createUIComponents(); // Inicializa los componentes de la interfaz
     }
 
     public void startGame() {
@@ -52,30 +61,44 @@ public class Game {
     }
 
     private void manageGame() {
+        // Aquí puedes agregar lógica para manejar el juego
     }
 
     public void saveGame() {
-        // Implementar lógica para guardar el estado del juego
         System.out.println("Juego guardado.");
     }
 
     public void exitGame() {
-        // Lógica para salir del juego
         System.exit(0);
     }
 
     public void openInventory() {
-        // Lógica para mostrar el inventario
         System.out.println("Inventario abierto.");
     }
 
     public void showStats() {
-        // Lógica para mostrar las estadísticas del jugador
         System.out.println("Mostrando estadísticas del jugador.");
     }
 
+    private void createUIComponents() {
+        goldLabel = new GoldLabel();
+        nameLabel = new NameLabel("{Odin} LVL. 1"); // Nombre de personaje de ejemplo
+        topPanel = new JPanel();
+        bottomPanel = new JPanel();
+
+        // Configura el layout de los paneles
+        topPanel.setLayout(new FlowLayout());
+        bottomPanel.setLayout(new FlowLayout());
+
+        topPanel.add(nameLabel);
+        bottomPanel.add(goldLabel);
     }
 
+    public JPanel getTopPanel() {
+        return topPanel;
+    }
 
-
-
+    public JPanel getBottomPanel() {
+        return bottomPanel;
+    }
+}

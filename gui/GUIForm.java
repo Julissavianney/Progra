@@ -38,6 +38,7 @@ public class GUIForm extends JFrame {
         createButtons(); // Primero agregamos los botones en la parte superior
         createSections();
 
+
         // Establecer el panel principal como contenido de la ventana
         setContentPane(mainPanel);
 
@@ -139,3 +140,4 @@ public class GUIForm extends JFrame {
         button.setIcon(new ImageIcon(scaledIcon));
     }
 }
+

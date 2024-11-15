@@ -50,12 +50,13 @@ public class HoverButtonUI extends BasicButtonUI {
         ImageCache.addImage("userHoverLeftSide", "buttons/hover/user/leftSide.png");
         ImageCache.addImage("userHoverCenterSide", "buttons/hover/user/centerSide.png");
         ImageCache.addImage("userHoverRightSide", "buttons/hover/user/rightSide.png");
-        parts[0] = ImageCache.getImageIcon("userLeftSide");
-        parts[1] = ImageCache.getImageIcon("userCenterSide");
-        parts[2] = ImageCache.getImageIcon("userRightSide");
-        partsHover[0] = ImageCache.getImageIcon("userHoverLeftSide");
-        partsHover[1] = ImageCache.getImageIcon("userHoverCenterSide");
-        partsHover[2] = ImageCache.getImageIcon("userHoverRightSide");
+        parts[0] = new ImageIcon(ImageCache.getImageIcon("userLeftSide").getImage());
+        parts[1] = new ImageIcon(ImageCache.getImageIcon("userCenterSide").getImage());
+        parts[2] = new ImageIcon(ImageCache.getImageIcon("userRightSide").getImage());
+        partsHover[0] = new ImageIcon(ImageCache.getImageIcon("userHoverLeftSide").getImage());
+        partsHover[1] = new ImageIcon(ImageCache.getImageIcon("userHoverCenterSide").getImage());
+        partsHover[2] = new ImageIcon(ImageCache.getImageIcon("userHoverRightSide").getImage());
+
     }
     @Override
     public void paint(Graphics g, JComponent c) {
